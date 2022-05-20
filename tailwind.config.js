@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary' : '#457b9d',
+        'primary' : '#003049',
         'secondary' : '#a8dadc',
-        'accent' : '#e63946'
+        'accent' : '#fb8500'
       },
       backgroundImage: {
         'cover' : "url('/image/cover.png')" 
