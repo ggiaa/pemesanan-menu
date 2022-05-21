@@ -3,6 +3,8 @@
 use App\Http\Controllers\adminDashboardContoller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,6 @@ Route::get('/', function () {
 Route::get('home', [HomeController::class, 'index']);
 
 Route::get('/dashboard', adminDashboardContoller::class);
+
 Route::resource('dashboard/menu', MenuController::class);
+Route::resource('dashboard/user', UserController::class);

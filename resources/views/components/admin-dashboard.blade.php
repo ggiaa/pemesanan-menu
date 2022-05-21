@@ -26,6 +26,9 @@
                     <a href="/dashboard/menu">
                         <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/menu*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Menu Makanan</div>
                     </a>
+                    <a href="/dashboard/user">
+                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/user*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">User</div>
+                    </a>
                     <a href="/dashboard/logout">
                         <div class="py-3 px-6 border-b border-slate-600">Logout</div>
                     </a>
@@ -46,7 +49,9 @@
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full md:hidden lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="/dashboard" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary {{ Request::is('dashboard') ? 'text-sky-500 font-semibold' : '' }}">Beranda</a>
+                                <a href="/dashboard">
+                                    <div class="py-3 px-6 border-y border-slate-600 {{ Request::is('dashboard') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Dashboard</div>
+                                </a>
                             </li>
                             <li class="group">
                                 <a href="/dashboard/books" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary {{ Request::is('dashboard/books*') ? 'text-sky-500 font-semibold' : '' }}">Books</a>
