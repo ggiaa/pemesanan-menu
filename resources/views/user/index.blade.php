@@ -11,10 +11,6 @@
 
 <body>
 
-    <!-- <div class="bg-cover h-10">
-        <img src="/image/cover.png" class="w-full">
-    </div> -->
-
     <!-- header start -->
     <header class="bg-primary absolute top-0 left-0 w-full flex items-center z-10 py-3">
         <div class="container mx-auto pl-16 pr-32">
@@ -46,26 +42,58 @@
     <section id="home" class="pt-20 pb-10">
         <div class="container mx-auto flex">
             <div class="flex-1 grid grid-cols-3 gap-8">
+                @foreach ($menus as $menu)
                 <!-- card -->
-                <div class="border rounded-md overflow-hidden shadow-lg">
-                    <img src="/image/cover.png">
-                    <div class="p-2">
-                        <p class="text-center font-normal text-xl capitalize">Pizza</p>
-                        <p class="text-center py-1">Rp. 35.400,00</p>
-                        <div class="w-full flex justify-center pt-4 pb-1">
-                            <button class="w-3/4 bg-accent rounded-md py-1 text-white font-semibold">Pesan</button>
+                <div class="border rounded-md shadow-lg flex flex-col">
+                    <img src="/image/cover.png" class="rounded-t-lg">
+                    <div class="p-2 h-full px-4">
+                        <div class="flex flex-col h-full">
+                            <div class="flex-1 text-center pt-2 pb-8">
+                                <span class="font-normal text-xl capitalize">{{ $menu->nama }}</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-center font-bold">Rp. {{ number_format($menu->harga) }}</p>
+                                <a href="/home/pesan/{{ $menu->slug }}" class="bg-accent rounded-lg py-1 px-5 text-center text-white font-semibold">Pesan</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- end card -->
+                @endforeach
             </div>
 
             <div class="w-1/4 ml-8">
-                <div class="bg-primary p-4 text-white rounded-md">
+                <div class="bg-primary p-4 text-white rounded-md w-full">
                     <p class="text-center font-medium uppercase pb-4 text-accent">Pesanan</p>
+                    @if (Session('pesanan') == null)
                     <div class="">
                         <p class="text-center pb-2">Belum Ada Pesanan</p>
                     </div>
+                    @else
+                    @foreach (session()->get('pesanan') as $p)
+                    <div class="flex gap-x-2 flex-wrap">
+                        <div class="w-full">
+                            <p>{{ json_decode(json_encode($p['nama'])) }}</p>
+                        </div>
+                        <div class="">
+                            <p>Rp. {{ json_decode($p['harga']) }}</p>
+                        </div>
+                        <div class="jumlah">
+                            <p>x{{ json_decode($p['jumlah']) }}</p>
+                        </div>
+                        <div>
+                            <a href="" class="plus font-bold rounded-full text-lg">+</a>
+                            <a href="" class="minus font-bold rounded-full text-lg">-</a>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <p>Total : <span class="text-accent font-bold">Rp. 20.000</span></p>
+                    </div>
+                    @endforeach
+                    <div class="mt-6 flex items-center">
+                        <a href="/home/konfirmasi" class="bg-accent text-white flex-1 text-center rounded-md py-1 text-lg">pesan</a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -82,6 +110,14 @@
                 header.classList.remove('navbar-fixed');
             }
         }
+
+        const plus = document.querySelector('.plus')
+        const minus = document.querySelector('.minus')
+        const jumlah = document.querySelector('.jumlah')
+
+        plus.addEventListener('click', function() {
+            jumlah.innerHTML()
+        })
     </script>
 </body>
 

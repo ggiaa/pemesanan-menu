@@ -15,8 +15,11 @@
             <h1 class="text-3xl text-center font-medium pb-8">Lorem Cafe</h1>
             <p class="text-center pb-3">Silahkan masukkan nomor meja kamu :</p>
             <div class="flex gap-x-3 pb-1">
-                <input type="text" class="flex-1 rounded-lg text-slate-800 px-1 font-medium shadow-lg focus:outline-none focus:ring-2 focus:ring-secondary">
-                <button class="bg-accent px-6 py-1 font-medium rounded-full shadow-lg hover:bg-secondary hover:text-slate-700">Konfirmasi</button>
+                <form action="/home" method="POST">
+                    @csrf
+                    <input type="text" name="nomer_meja" class="flex-1 rounded-lg text-slate-800 px-1 font-medium shadow-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <button class="bg-accent px-6 py-1 font-medium rounded-full shadow-lg hover:bg-secondary hover:text-slate-700" type="submit">Konfirmasi</button>
+                </form>
             </div>
         </div>
     </div>
