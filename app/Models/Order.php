@@ -22,4 +22,9 @@ class Order extends Model
     {
         return $this->belongsTo(Menu::class, 'id_menu', 'id');
     }
+
+    function getRouteKeyName()
+    {
+        return 'id_menu';
+    }
 }

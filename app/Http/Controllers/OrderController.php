@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -19,7 +20,15 @@ class OrderController extends Controller
                 "total_harga" => $p['jumlah'] * $p['harga'],
             ];
 
-            Order::create($validate);
+            // get spesifik pesanan dari session
+            $menu = Order::where('no_meja', Session::get('meja'))->where('id_menu', $p['id_menu'])->first();
+
+            // update jumlah jika pesanan telah ada, buat baru kalo belum ada pesanan tersebut
+            if ($menu !== null) {
+                DB::table('orders')->where(['no_meja' => Session::get('meja'), 'id_menu' => $p['id_menu']])->update(['jumlah' => $menu->jumlah + $p['jumlah']]);
+            } else {
+                Order::create($validate);
+            }
         }
 
         Session::forget('pesanan');
