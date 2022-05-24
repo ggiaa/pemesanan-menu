@@ -12,21 +12,25 @@ class HomeController extends Controller
 {
     public function show()
     {
-        return view('user.index', [
-            "menus" => Menu::latest()->paginate(12)
-        ]);
+        // dd(session('meja'));
+        if (session('meja') !== null) {
+            return view('user.index', [
+                "menus" => Menu::latest()->get()
+            ]);
+        } else {
+            return view('welcome');
+        }
     }
 
-    public function pesan($slug)
+    public function pesan(Request $request, $slug)
     {
         $menu = Menu::where('slug', $slug)->get();
         $pesanan = Session::get('pesanan');
-        $pesanan[] = array(
-            // 'id_meja' => Session::get('meja'),
+        $pesanan[$menu[0]->id] = array(
             'id_menu' => $menu[0]->id,
             'nama' => $menu[0]->nama,
             'harga' => $menu[0]->harga,
-            'jumlah' => 1,
+            'jumlah' => $request->jumlah,
         );
 
         Session::put('pesanan', $pesanan);

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('id_menu');
             $table->integer('jumlah');
             $table->integer('total_harga');
-            $table->primary(['no_meja', 'id_menu']);
         });
     }
 

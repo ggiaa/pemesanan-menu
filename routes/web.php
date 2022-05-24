@@ -22,12 +22,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
 // dapatkan nomer meja 
-Route::post('home', [WelcomeController::class, 'getMeja']);
+Route::post('home', [WelcomeController::class, 'getMeja'])->name('welcome');
 
 
 Route::get('home', [HomeController::class, 'show']);
-Route::get('home/pesan/{menus:slug}', [HomeController::class, 'pesan']);
+Route::post('home/pesan/{menus:slug}', [HomeController::class, 'pesan']);
 
+Route::get('home/hapus/{order:id_menu}', [OrderController::class, 'hapus']);
 Route::get('home/konfirmasi', [OrderController::class, 'konfirmasi']);
 
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    public function konfirmasi()
+    public function konfirmasi(Request $request)
     {
         $pesan = Session::get('pesanan');
         foreach ($pesan as $p) {
@@ -22,7 +22,18 @@ class OrderController extends Controller
             Order::create($validate);
         }
 
-        session()->flush();
+        Session::forget('pesanan');
+
+        return redirect('/konfirmasi');
+    }
+
+    public function hapus($id_menu)
+    {
+        $array = Session::get('pesanan');
+
+        unset($array[$id_menu]);
+
+        Session::put('pesanan', $array);
 
         return back();
     }

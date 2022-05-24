@@ -51,9 +51,17 @@
                             <div class="flex-1 text-center pt-2 pb-8">
                                 <span class="font-normal text-xl capitalize">{{ $menu->nama }}</span>
                             </div>
+                            <p class="text-center font-bold">Rp. {{ number_format($menu->harga) }}</p>
                             <div class="flex justify-between items-center mb-2">
-                                <p class="text-center font-bold">Rp. {{ number_format($menu->harga) }}</p>
-                                <a href="/home/pesan/{{ $menu->slug }}" class="bg-accent rounded-lg py-1 px-5 text-center text-white font-semibold">Pesan</a>
+                                <form action="/home/pesan/{{ $menu->slug }}" method="post">
+                                    @csrf
+                                    <div class="button">
+                                        <input type="text" name="jumlah" class="jumlah w-[15%]" value="1">
+                                        <p class="plus">+</p>
+                                        <p class="minus">-</p>
+                                    </div>
+                                    <button type="submit" class="bg-accent rounded-lg py-1 px-5 text-center text-white font-semibold">Pilih</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -62,38 +70,50 @@
                 @endforeach
             </div>
 
-            <div class="w-1/4 ml-8">
-                <div class="bg-primary p-4 text-white rounded-md w-full">
-                    <p class="text-center font-medium uppercase pb-4 text-accent">Pesanan</p>
-                    @if (Session('pesanan') == null)
+            <div class="w-1/4 ml-8 relative">
+                <div class="bg-primary p-4 text-white rounded-md fixed w-1/4">
+                    <p class="pesanan-text text-center font-medium uppercase pb-4 text-accent">Pesanan</p>
+                    <!-- pesanan start -->
                     <div class="">
-                        <p class="text-center pb-2">Belum Ada Pesanan</p>
-                    </div>
-                    @else
-                    @foreach (session()->get('pesanan') as $p)
-                    <div class="flex gap-x-2 flex-wrap">
-                        <div class="w-full">
-                            <p>{{ json_decode(json_encode($p['nama'])) }}</p>
-                        </div>
+                        @if (Session('pesanan') == null)
                         <div class="">
-                            <p>Rp. {{ json_decode($p['harga']) }}</p>
+                            <p class="text-center pb-2">Belum Ada Pesanan</p>
                         </div>
-                        <div class="jumlah">
-                            <p>x{{ json_decode($p['jumlah']) }}</p>
+                        @else
+                        @php
+                        $total = 0
+                        @endphp
+                        @foreach (session()->get('pesanan') as $p)
+                        <div class="flex gap-x-2 flex-wrap py-1">
+                            <div>
+                                <a href="/home/hapus/{{ $p['id_menu'] }}">
+                                    <p class="hapus px-2 bg-red-400 rounded-full">-</p>
+                                </a>
+                            </div>
+                            <div class="">
+                                <p>{{ json_decode(json_encode($p['nama'])) }}</p>
+                            </div>
+                            <div class="">
+                                <p>Rp. {{ json_decode($p['harga']) }}</p>
+                            </div>
+                            <div class="jumlah">
+                                <p>x {{ json_decode($p['jumlah']) }}</p>
+                            </div>
                         </div>
-                        <div>
-                            <a href="" class="plus font-bold rounded-full text-lg">+</a>
-                            <a href="" class="minus font-bold rounded-full text-lg">-</a>
+                        @php
+                        $total += json_decode($p['harga'] * $p['jumlah'])
+                        @endphp
+
+                        @endforeach
+                        <div class="mt-5">
+                            <p>Total : <span class="text-accent font-bold">Rp. {{ number_format($total) }}</span></p>
                         </div>
+                        <div class=" mt-6 flex items-center">
+                            <a href="/home/konfirmasi" class="bg-accent text-white flex-1 text-center rounded-md py-1 text-lg">Pesan Sekarang</a>
+                        </div>
+                        @endif
                     </div>
-                    <div class="mt-5">
-                        <p>Total : <span class="text-accent font-bold">Rp. 20.000</span></p>
-                    </div>
-                    @endforeach
-                    <div class="mt-6 flex items-center">
-                        <a href="/home/konfirmasi" class="bg-accent text-white flex-1 text-center rounded-md py-1 text-lg">pesan</a>
-                    </div>
-                    @endif
+                    <!-- pesanan end -->
                 </div>
             </div>
         </div>
@@ -111,13 +131,23 @@
             }
         }
 
-        const plus = document.querySelector('.plus')
-        const minus = document.querySelector('.minus')
-        const jumlah = document.querySelector('.jumlah')
+        const plus = document.querySelectorAll('.plus')
+        const minus = document.querySelectorAll('.minus')
+        const jumlah = document.querySelectorAll('.jumlah')
 
-        plus.addEventListener('click', function() {
-            jumlah.innerHTML()
-        })
+        plus.forEach(e => {});
+
+        for (let i = 0; i < plus.length; i++) {
+            plus[i].addEventListener('click', function() {
+                jumlah[i].value = ++jumlah[i].value;
+            })
+
+            minus[i].addEventListener('click', function() {
+                if (jumlah[i].value != 1) {
+                    jumlah[i].value = --jumlah[i].value;
+                }
+            })
+        }
     </script>
 </body>
 
