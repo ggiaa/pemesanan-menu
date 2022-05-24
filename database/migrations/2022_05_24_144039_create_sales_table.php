@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->integer('no_meja');
-            $table->integer('id_menu');
+        Schema::create('sales', function (Blueprint $table) {
+            $table->id();
+            $table->integer('menu_id');
             $table->integer('jumlah');
-            $table->integer('total_harga');
-            $table->primary(['no_meja', 'id_menu']);
+            $table->bigInteger('total_harga');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('sales');
     }
 };

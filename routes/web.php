@@ -33,6 +33,7 @@ Route::get('home/hapus/{order:id_menu}', [OrderController::class, 'hapus']);
 Route::get('home/konfirmasi', [OrderController::class, 'konfirmasi']);
 
 Route::get('home/struk/{no}', [ConfirmController::class, 'index']);
+Route::get('home/bayar/{no_meja}', [ConfirmController::class, 'bayar']);
 
 
 

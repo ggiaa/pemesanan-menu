@@ -46,7 +46,7 @@
 
                 <div class="mt-8 flex justify-end gap-x-4">
                     <a href="/home" class="bg-accent text-white px-4 rounded-md py-1">Tambah Pesanan</a>
-                    <a href="" class="bg-accent text-white px-4 rounded-md py-1">Bayar Sekarang</a>
+                    <a href="/home/bayar/{{ $order->no_meja }}" class="bg-accent text-white px-4 rounded-md py-1">Bayar Sekarang</a>
                 </div>
             </div>
         </div>
