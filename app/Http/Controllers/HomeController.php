@@ -12,10 +12,11 @@ class HomeController extends Controller
 {
     public function show()
     {
-        // dd(session('meja'));
         if (session('meja') !== null) {
             return view('user.index', [
-                "menus" => Menu::latest()->get()
+                "menus" => Menu::latest()->get(),
+                'orders' => Order::where('no_meja', Session('meja'))->get(),
+
             ]);
         } else {
             return view('welcome');

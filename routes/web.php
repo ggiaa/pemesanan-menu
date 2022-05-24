@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminDashboardContoller;
+use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
@@ -30,6 +31,8 @@ Route::post('home/pesan/{menus:slug}', [HomeController::class, 'pesan']);
 
 Route::get('home/hapus/{order:id_menu}', [OrderController::class, 'hapus']);
 Route::get('home/konfirmasi', [OrderController::class, 'konfirmasi']);
+
+Route::get('home/struk/{no}', [ConfirmController::class, 'index']);
 
 
 

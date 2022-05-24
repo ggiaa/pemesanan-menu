@@ -115,6 +115,12 @@
                     </div>
                     <!-- pesanan end -->
                 </div>
+
+                @if ($orders !== null)
+                <div class="bg-accent fixed bottom-8 right-8 py-1 px-4 rounded-full text-white cursor-pointer">
+                    <a href="/home/struk/{{ Session::get('meja') }}" class="lg">Kembali ke halaman pesanan</a>
+                </div>
+                @endif
             </div>
         </div>
     </section>

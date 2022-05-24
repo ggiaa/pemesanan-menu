@@ -24,7 +24,7 @@ class OrderController extends Controller
 
         Session::forget('pesanan');
 
-        return redirect('/konfirmasi');
+        return redirect('/home/struk/' . Session::get('meja'));
     }
 
     public function hapus($id_menu)

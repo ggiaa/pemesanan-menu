@@ -17,4 +17,9 @@ class Order extends Model
         'jumlah',
         'total_harga',
     ];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'id_menu', 'id');
+    }
 }
