@@ -22,13 +22,13 @@
                     <nav id="nav-menu" class="block static max-w-full text-white">
                         <ul class="flex gap-x-10 font-medium">
                             <li class="group">
-                                <a href="" class="group-hover:text-accent uppercase">semua menu</a>
+                                <a href="/home" class="{{ Request::is('home') ? 'text-accent' : '' }} group-hover:text-accent uppercase">semua menu</a>
                             </li>
                             <li class="group">
-                                <a href="" class="group-hover:text-accent uppercase">Makanan</a>
+                                <a href="/home/makanan" class="{{ Request::is('home/makanan') ? 'text-accent' : '' }} group-hover:text-accent uppercase">Makanan</a>
                             </li>
                             <li class="group">
-                                <a href="" class="group-hover:text-accent uppercase">Minuman</a>
+                                <a href="/home/minuman" class="{{ Request::is('home/minuman') ? 'text-accent' : ''}} group-hover:text-accent uppercase">Minuman</a>
                             </li>
                         </ul>
                     </nav>
@@ -116,7 +116,7 @@
                     <!-- pesanan end -->
                 </div>
 
-                @if ($orders !== null)
+                @if ($orders)
                 <div class="bg-accent fixed bottom-8 right-8 py-1 px-4 rounded-full text-white cursor-pointer">
                     <a href="/home/struk/{{ Session::get('meja') }}" class="lg">Kembali ke halaman pesanan</a>
                 </div>

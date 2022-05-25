@@ -15,7 +15,33 @@ class HomeController extends Controller
         if (session('meja') !== null) {
             return view('user.index', [
                 "menus" => Menu::latest()->get(),
-                'orders' => Order::where('no_meja', Session('meja'))->get(),
+                'orders' => Order::where('no_meja', Session('meja'))->get()->all(),
+
+            ]);
+        } else {
+            return view('welcome');
+        }
+    }
+
+    public function makanan()
+    {
+        if (session('meja') !== null) {
+            return view('user.index', [
+                "menus" => Menu::where('jenis', 'makanan')->latest()->get(),
+                'orders' => Order::where('no_meja', Session('meja'))->get()->all(),
+
+            ]);
+        } else {
+            return view('welcome');
+        }
+    }
+
+    public function minuman()
+    {
+        if (session('meja') !== null) {
+            return view('user.index', [
+                "menus" => Menu::where('jenis', 'minuman')->latest()->get(),
+                'orders' => Order::where('no_meja', Session('meja'))->get()->all(),
 
             ]);
         } else {

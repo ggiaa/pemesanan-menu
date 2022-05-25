@@ -6,6 +6,7 @@ use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
@@ -22,12 +23,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 // dapatkan nomer meja 
-Route::post('home', [WelcomeController::class, 'getMeja'])->name('welcome');
+Route::post('home', [WelcomeController::class, 'getMeja']);
 
 
 Route::get('home', [HomeController::class, 'show']);
+Route::get('home/makanan', [HomeController::class, 'makanan']);
+Route::get('home/minuman', [HomeController::class, 'minuman']);
 Route::post('home/pesan/{menus:slug}', [HomeController::class, 'pesan']);
 
 Route::get('home/hapus/{order:id_menu}', [OrderController::class, 'hapus']);
@@ -40,6 +43,9 @@ Route::get('home/bayar/{no_meja}', [ConfirmController::class, 'bayar']);
 
 Route::get('/dashboard/pesanan', [AdminOrderController::class, 'index']);
 Route::post('/dashboard/pesanan/detail', [AdminOrderController::class, 'detail']);
+
+Route::get('/dashboard/laporan', [SaleController::class, 'index']);
+Route::get('/dashboard/laporan/{date}', [SaleController::class, 'show']);
 
 Route::get('/dashboard', adminDashboardContoller::class);
 Route::resource('dashboard/menu', MenuController::class);

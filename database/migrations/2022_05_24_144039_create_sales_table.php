@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('menu_id');
             $table->integer('jumlah');
-            $table->bigInteger('total_harga');
-            $table->timestamps();
+            $table->bigInteger('sub_harga');
+            $table->bigInteger('total_semua');
+            $table->date('tanggal');
         });
     }
 

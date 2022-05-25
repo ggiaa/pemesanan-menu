@@ -9,5 +9,13 @@ class Sale extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['menu_id', 'jumlah', 'total_harga'];
+    public $timestamps = false;
+
+    protected $fillable = ['menu_id', 'jumlah', 'sub_harga', 'total_semua', 'tanggal'];
+
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
 }

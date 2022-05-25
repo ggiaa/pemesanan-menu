@@ -23,14 +23,17 @@
                     <a href="/dashboard">
                         <div class="py-3 px-6 border-y border-slate-600 {{ Request::is('dashboard') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Dashboard</div>
                     </a>
-                    <a href="/dashboard/menu">
-                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/menu*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Menu Makanan</div>
-                    </a>
                     <a href="/dashboard/pesanan">
                         <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/pesanan*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Pesanan</div>
                     </a>
+                    <a href="/dashboard/menu">
+                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/menu*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Data Menu</div>
+                    </a>
                     <a href="/dashboard/user">
-                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/user*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">User</div>
+                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/user*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Data User</div>
+                    </a>
+                    <a href="/dashboard/laporan">
+                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/laporan*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Data Penjualan</div>
                     </a>
                     <a href="/dashboard/logout">
                         <div class="py-3 px-6 border-b border-slate-600">Logout</div>

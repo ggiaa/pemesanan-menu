@@ -1,8 +1,6 @@
 <x-admin-dashboard title="PESANAN">
     <div class="flex justify-end gap-x-2 mb-6">
-        <form action="/dashboard/pesanan" method="get">
-            <p class="cari-btn border border-gray-200 rounded-full focus:outline-none px-6 py-1 cursor-pointer bg-white">Cari Data Pesanan</p>
-        </form>
+        <p class="cari-btn border border-gray-200 rounded-full focus:outline-none px-6 py-1 cursor-pointer bg-white">Cari Data Pesanan</p>
     </div>
     <div class="w-full border-b border-gray-200 shadow rounded-lg overflow-hidden">
         <table class="w-full">
