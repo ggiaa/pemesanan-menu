@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminDashboardContoller;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
@@ -37,6 +38,8 @@ Route::get('home/bayar/{no_meja}', [ConfirmController::class, 'bayar']);
 
 
 
+Route::get('/dashboard/pesanan', [AdminOrderController::class, 'index']);
+Route::post('/dashboard/pesanan/detail', [AdminOrderController::class, 'detail']);
 
 Route::get('/dashboard', adminDashboardContoller::class);
 Route::resource('dashboard/menu', MenuController::class);

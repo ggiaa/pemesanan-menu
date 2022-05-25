@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->integer('total_harga');
             $table->primary(['no_meja', 'id_menu']);
+            $table->timestamps();
         });
     }
 

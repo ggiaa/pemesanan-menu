@@ -26,6 +26,9 @@
                     <a href="/dashboard/menu">
                         <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/menu*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Menu Makanan</div>
                     </a>
+                    <a href="/dashboard/pesanan">
+                        <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/pesanan*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">Pesanan</div>
+                    </a>
                     <a href="/dashboard/user">
                         <div class="py-3 px-6 border-b border-slate-600 {{ Request::is('dashboard/user*') ? 'bg-slate-400 bg-opacity-40 text-accent font-semibold' : '' }}">User</div>
                     </a>
@@ -63,7 +66,7 @@
                 </div>
 
 
-                <div class="flex-1 overflow-auto py-6 px-10 box-border">
+                <div class="flex-1 overflow-auto py-6 px-10 box-border bg-slate-50">
                     {{ $slot }}
                 </div>
             </div>
