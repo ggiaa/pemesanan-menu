@@ -30,7 +30,14 @@ class AdminOrderController extends Controller
                 'meja' => $request->no_meja,
             ]);
         } else {
-            return back()->with('error', 'Pesanan dengan nomer meja ' . $request->no_meja . ' tidak ditemukan@');
+            return back()->with('error', 'Pesanan dengan nomer meja ' . $request->no_meja . ' tidak ditemukan');
         }
+    }
+
+    public function confirm($meja, $menu)
+    {
+        Order::where('no_meja', $meja)->where('id_menu', $menu)->update(['status' => 'confirm']);
+
+        return redirect()->back();
     }
 }

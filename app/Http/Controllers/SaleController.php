@@ -12,13 +12,18 @@ class SaleController extends Controller
     {
         $tanggal = Sale::orderBy('tanggal', 'desc')->get()->all();
 
-        foreach ($tanggal as $tgl) {
-            $date[] = $tgl->tanggal;
-        }
-        $arrTanggal = array_values(array_unique($date));
+        if ($tanggal) {
+            foreach ($tanggal as $tgl) {
+                $date[] = $tgl->tanggal;
+            }
 
-        foreach ($arrTanggal as $tgl) {
-            $sales[] = Sale::where('tanggal', $tgl)->orderBy('tanggal', 'desc')->get()->first();
+            $arrTanggal = array_values(array_unique($date));
+
+            foreach ($arrTanggal as $tgl) {
+                $sales[] = Sale::where('tanggal', $tgl)->orderBy('tanggal', 'desc')->get()->first();
+            }
+        } else {
+            $sales = Sale::get()->all();
         }
 
         return view('admin.laporan.index', [

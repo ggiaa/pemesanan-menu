@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $timestamps = true;
+
     protected $fillable = [
         'no_meja',
         'id_menu',

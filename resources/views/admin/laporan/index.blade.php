@@ -21,7 +21,7 @@
                     <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">{{ date('d F o' , strtotime($sale->tanggal)) }}</td>
                     <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">Rp. {{ number_format($sale->total_semua) }}</td>
                     <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">
-                        <a href="/dashboard/laporan/{{ $sale->tanggal }}" class="bg-sky-400 text-white px-4 py-1 rounded-full">Detail</a>
+                        <a href="/dashboard/laporan/{{ $sale->tanggal }}" class="bg-sky-400 text-white px-6 py-1 rounded-full">Detail</a>
                     </td>
                 </tr>
                 @endforeach

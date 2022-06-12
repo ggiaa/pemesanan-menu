@@ -11,9 +11,6 @@ module.exports = {
         'secondary' : '#a8dadc',
         'accent' : '#fb8500'
       },
-      backgroundImage: {
-        'cover' : "url('/image/cover.png')" 
-      }
     },
   },
   plugins: [],

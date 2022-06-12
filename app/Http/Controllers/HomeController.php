@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\Pesanan;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -19,7 +20,7 @@ class HomeController extends Controller
 
             ]);
         } else {
-            return view('welcome');
+            return redirect(route('welcome'));
         }
     }
 
@@ -32,7 +33,7 @@ class HomeController extends Controller
 
             ]);
         } else {
-            return view('welcome');
+            return redirect(route('welcome'));
         }
     }
 
@@ -45,23 +46,7 @@ class HomeController extends Controller
 
             ]);
         } else {
-            return view('welcome');
+            return redirect(route('welcome'));
         }
-    }
-
-    public function pesan(Request $request, $slug)
-    {
-        $menu = Menu::where('slug', $slug)->get();
-        $pesanan = Session::get('pesanan');
-        $pesanan[$menu[0]->id] = array(
-            'id_menu' => $menu[0]->id,
-            'nama' => $menu[0]->nama,
-            'harga' => $menu[0]->harga,
-            'jumlah' => $request->jumlah,
-        );
-
-        Session::put('pesanan', $pesanan);
-
-        return redirect()->back()->with($pesanan);
     }
 }

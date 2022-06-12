@@ -11,33 +11,33 @@
     @endif
 
     <div>
-        <a href="/dashboard/menu/create" class="bg-sky-500 text-white py-1 px-3 rounded hover:bg-opacity-90">Tambah Menu</a>
+        <a href="/dashboard/menu/create" class="bg-sky-500 text-white py-1 px-6 rounded-full hover:bg-opacity-90">Tambah Menu</a>
     </div>
 
     <div class="table border my-4 w-4/5">
         <table class="w-full">
             <thead>
                 <tr class="border-b text-left">
-                    <th scope="col" class="py-2 bg-slate-100 px-1">#</th>
-                    <th scope="col" class="py-2 bg-slate-100">Nama</th>
-                    <th scope="col" class="py-2 bg-slate-100">Harga</th>
-                    <th scope="col" class="py-2 bg-slate-100">Jenis</th>
-                    <th scope="col" class="py-2 bg-slate-100">Action</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">#</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Nama</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Harga</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Jenis</th>
+                    <th scope="col" class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Action</th>
                 </tr>
             </thead>
-            <tbody class="divide-y">
+            <tbody class="bg-white">
                 @foreach ($menus as $menu)
                 <tr class="hover:bg-slate-50">
-                    <td>{{($menus->currentPage() - 1) * $menus->perPage() + $loop->iteration}}</td>
-                    <td>{{ $menu->nama }}</td>
-                    <td>Rp. {{ number_format($menu->harga) }}</td>
-                    <td>{{ $menu->jenis }}</td>
-                    <td class="py-1 gap-x-2">
-                        <a href="/dashboard/menu/{{ $menu->slug }}/edit" class="bg-orange-500 text-white px-2 rounded text-sm py-1 hover:bg-opacity-90">Edit</span></a>
+                    <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">{{($menus->currentPage() - 1) * $menus->perPage() + $loop->iteration}}</td>
+                    <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">{{ $menu->nama }}</td>
+                    <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">Rp. {{ number_format($menu->harga) }}</td>
+                    <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200">{{ $menu->jenis }}</td>
+                    <td class="px-6 py-2 whitespace-nowrap border-b border-gray-200 gap-x-2">
+                        <a href="/dashboard/menu/{{ $menu->slug }}/edit" class="bg-orange-500 text-white px-4 rounded-full text-sm py-1 hover:bg-opacity-90">Edit</span></a>
                         <form action="/dashboard/menu/{{ $menu->slug }}" style="display: inline" method="post">
                             @method('DELETE')
                             @csrf
-                            <button class="bg-red-500 text-white px-2 rounded text-sm py-1 hover:bg-opacity-90">Hapus</button>
+                            <button class="bg-red-500 text-white px-4 rounded-full text-sm py-1 hover:bg-opacity-90">Hapus</button>
                         </form>
                     </td>
                 </tr>

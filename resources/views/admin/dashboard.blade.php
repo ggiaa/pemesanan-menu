@@ -1,3 +1,7 @@
 <x-admin-dashboard title="DASHBOARD">
-    hehe
+    <div>
+        <p class="text-center font-medium text-2xl mb-6">Lorem Cafe</p>
+        <p class="indent-16 mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi voluptates magni voluptatibus dolor, culpa veniam fugiat repudiandae, ratione perspiciatis rerum qui facere mollitia assumenda facilis veritatis sequi? Ex eveniet voluptates aperiam alias ad laudantium, maiores voluptate, libero, obcaecati quod aspernatur dolor vel quidem officiis modi quae? Ab reprehenderit nobis alias vero asperiores minima? Ad fugit distinctio ratione maiores? Alias optio non doloremque odio numquam vel, amet voluptatem odit nobis natus, repellat cupiditate labore omnis deleniti consequatur nihil accusantium, magnam illo placeat nam voluptate? Vel dolor harum nam eius dignissimos alias assumenda culpa? Fugiat, natus pariatur. Possimus aliquam aliquid laborum voluptatem.</p>
+        <p class="indent-16">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aut ipsa, exercitationem soluta tempora corrupti odio quibusdam, quod dolorem vitae voluptatum! Rerum a, ipsum eum, praesentium est suscipit quisquam magnam sed quia labore esse neque voluptas quasi eligendi quos, exercitationem dignissimos. Dolore, quos. Corrupti quo aliquid et repellat, tempore distinctio laudantium architecto error quia ad. Quibusdam quasi, deleniti optio aperiam, excepturi id minima nemo porro, veniam voluptatibus distinctio in sapiente?</p>
+    </div>
 </x-admin-dashboard>

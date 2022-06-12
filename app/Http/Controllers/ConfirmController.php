@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\Sale;
 use Carbon\Carbon;
@@ -56,6 +57,8 @@ class ConfirmController extends Controller
 
         DB::table('orders')->where(['no_meja' => Session::get('meja')])->delete();
 
-        return redirect(route('welcome'));
+        Session::forget('meja');
+
+        return redirect(route('welcome'))->with('success', 'berhasil');
     }
 }

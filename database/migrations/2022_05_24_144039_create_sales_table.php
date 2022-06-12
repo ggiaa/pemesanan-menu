@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->integer('menu_id');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
             $table->integer('jumlah');
             $table->bigInteger('sub_harga');
             $table->bigInteger('total_semua');

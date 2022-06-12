@@ -9,6 +9,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
+        if (Session::get('meja')) {
+            return redirect('home');
+        }
         return view('welcome');
     }
 
@@ -16,9 +19,11 @@ class WelcomeController extends Controller
     {
         Session::get('meja');
 
-        $no = $request->nomer_meja;
+        $no = $request->validate([
+            'nomer_meja' => 'required|numeric',
+        ]);
 
-        Session::put('meja', $no);
+        Session::put('meja', $request->nomer_meja);
 
         return redirect('home');
     }
